@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora-Variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+
+    /* Weather app: Deep atmospheric dark theme */
+    --background: 0.14 0.025 250;
+    --foreground: 0.96 0.01 245;
+    --card: 0.18 0.03 250;
+    --card-foreground: 0.96 0.01 245;
+    --popover: 0.2 0.04 250;
+    --popover-foreground: 0.96 0.01 245;
+    --primary: 0.72 0.18 220;
+    --primary-foreground: 0.1 0.02 250;
+    --secondary: 0.22 0.04 250;
+    --secondary-foreground: 0.88 0.04 240;
+    --muted: 0.22 0.04 250;
+    --muted-foreground: 0.6 0.06 240;
+    --accent: 0.65 0.2 210;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.65 0.24 29;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.28 0.04 250;
+    --input: 0.26 0.05 250;
+    --ring: 0.65 0.18 220;
+
+    /* Chart colors */
+    --chart-1: 0.72 0.18 220;
+    --chart-2: 0.65 0.2 180;
+    --chart-3: 0.78 0.15 45;
+    --chart-4: 0.6 0.22 300;
+    --chart-5: 0.55 0.18 140;
+
+    /* Sidebar */
+    --sidebar: 0.16 0.03 250;
+    --sidebar-foreground: 0.96 0.01 245;
+    --sidebar-primary: 0.72 0.18 220;
+    --sidebar-primary-foreground: 0.1 0.02 250;
+    --sidebar-accent: 0.22 0.04 250;
+    --sidebar-accent-foreground: 0.88 0.04 240;
+    --sidebar-border: 0.28 0.04 250;
+    --sidebar-ring: 0.65 0.18 220;
+
+    /* Weather custom tokens */
+    --glass: 0.2 0.04 250;
+    --glass-border: 0.35 0.06 240;
+    --temp-display: 0.92 0.02 245;
+    --weather-glow: 0.72 0.18 220;
+  }
+
+  /* Weather condition backgrounds - applied as CSS classes */
+  .weather-clear {
+    --bg-from: 0.28 0.12 220;
+    --bg-via: 0.2 0.1 240;
+    --bg-to: 0.14 0.04 250;
+  }
+  .weather-cloudy {
+    --bg-from: 0.25 0.04 240;
+    --bg-via: 0.2 0.03 240;
+    --bg-to: 0.16 0.02 250;
+  }
+  .weather-rain {
+    --bg-from: 0.2 0.06 230;
+    --bg-via: 0.16 0.04 240;
+    --bg-to: 0.12 0.02 250;
+  }
+  .weather-snow {
+    --bg-from: 0.3 0.04 220;
+    --bg-via: 0.25 0.06 210;
+    --bg-to: 0.2 0.04 240;
+  }
+  .weather-storm {
+    --bg-from: 0.18 0.06 260;
+    --bg-via: 0.14 0.05 270;
+    --bg-to: 0.1 0.02 260;
+  }
+  .weather-fog {
+    --bg-from: 0.25 0.03 240;
+    --bg-via: 0.22 0.02 240;
+    --bg-to: 0.18 0.02 245;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Glass card utility */
+  .glass-card {
+    background: oklch(var(--glass) / 0.6);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid oklch(var(--glass-border) / 0.5);
+  }
+
+  .temp-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: oklch(var(--temp-display));
+  }
+
+  /* Ad placeholder */
+  .ad-placeholder {
+    background: repeating-linear-gradient(
+      45deg,
+      oklch(0.2 0.02 250 / 0.5),
+      oklch(0.2 0.02 250 / 0.5) 10px,
+      oklch(0.22 0.03 250 / 0.5) 10px,
+      oklch(0.22 0.03 250 / 0.5) 20px
+    );
+    border: 2px dashed oklch(0.35 0.05 250 / 0.6);
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: oklch(0.18 0.03 250 / 0.3);
+    border-radius: 2px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(0.4 0.08 240 / 0.6);
+    border-radius: 2px;
+  }
+}
